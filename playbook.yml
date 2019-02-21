@@ -65,5 +65,5 @@
             autoremove: yes
 
       - name: Reboot system
-        command: /sbin/reboot
+        reboot:
 ...
