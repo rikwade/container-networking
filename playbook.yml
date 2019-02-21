@@ -1,0 +1,69 @@
+---
+- name: Configure Linux image with Docker and Kubernetes and nginx
+  hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+      - name: Add Docker repository key
+        apt_key:
+            url: https://download.docker.com/linux/ubuntu/gpg
+            state: present
+
+      - name: Add Docker repo
+        apt_repository:
+            repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ansible_distribution_release}} edge
+
+      - name: Update all packages to current version
+        apt:
+            update_cache: yes
+            upgrade: dist
+
+        # need to wait for Ansible 2.8 for this
+        #- name: Install Kubernetes Snap
+        #snap:
+        #name: microk8s
+        #state: present
+      - name: Install Kubernetes Snap
+        shell: snap install microk8s --edge --classic
+
+        #- name: Start Kubernetes Snap
+        #command: microk8s.start
+
+      - name: Alias kubectl
+        shell: snap alias microk8s.kubectl kubectl
+
+      - name: Install Docker
+        apt:
+            name: docker-ce
+            state: present
+            update_cache: yes
+
+      - name: Add Docker Group
+        group:
+            name: docker
+            state: present
+
+      - name: Add user to Docker Group
+        user:
+            name: vagrant
+            groups: docker
+            append: yes
+        
+      - name: Install nginx
+        apt:
+            name: nginx
+            state: present
+            update_cache: yes
+
+      - name: Clear APT cache
+        apt:
+            autoclean: yes
+
+      - name: Remove unwanted dependencies
+        apt:
+            autoremove: yes
+
+      - name: Reboot system
+        command: /sbin/reboot
+...
