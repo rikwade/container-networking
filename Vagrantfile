@@ -16,17 +16,17 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "ubuntu"
   #config.vm.network :private_network, ip: "172.16.9.99"
   config.vm.network "forwarded_port", guest: 22, host: 2222, auto_correct: true
-  config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+  config.vm.network "forwarded_port", guest: 80, host: 8081, auto_correct: true
   config.vm.network "forwarded_port", guest: 8080, host: 8888, auto_correct: true
 
-  config.vm.synced_folder "sync/", "/vagrant"
+  config.vm.synced_folder "sync/", "/home/vagrant/sync", create: true, disabled: false
 
   #config.vm.provision :shell, path: "provision.sh"
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "v"
     ansible.playbook = "playbook.yml"
     ansible.extra_vars = {
-        ansible_python_interpreter: "/usr/bin/python3",
+        ansible_python_interpreter: "/usr/bin/python3", 
     }
   end
 end

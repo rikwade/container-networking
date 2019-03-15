@@ -49,12 +49,12 @@
             name: vagrant
             groups: docker
             append: yes
-        
-      - name: Install nginx
-        apt:
-            name: nginx
-            state: present
-            update_cache: yes
+
+      - name: Copy vimrc to VM
+        copy:
+            src: cfg/vimrc
+            dest: /home/vagrant/.vimrc
+            force: no
 
       - name: Clear APT cache
         apt:
@@ -64,6 +64,6 @@
         apt:
             autoremove: yes
 
-      - name: Reboot system
-        reboot:
+            #- name: Reboot system
+            #reboot:
 ...
