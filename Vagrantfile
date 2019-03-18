@@ -16,7 +16,8 @@ Vagrant.configure("2") do |config|
   config.vm.hostname = "ubuntu"
   #config.vm.network :private_network, ip: "172.16.9.99"
   config.vm.network "forwarded_port", guest: 22, host: 2222, auto_correct: true
-  config.vm.network "forwarded_port", guest: 80, host: 8081, auto_correct: true
+  config.vm.network "forwarded_port", guest: 80, host: 8080, auto_correct: true
+  config.vm.network "forwarded_port", guest: 30001, host: 8081, auto_correct: true
   config.vm.network "forwarded_port", guest: 8080, host: 8888, auto_correct: true
 
   config.vm.synced_folder "sync/", "/home/vagrant/sync", create: true, disabled: false

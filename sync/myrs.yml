@@ -13,8 +13,8 @@ spec:
         app: mynginx
     spec:
       containers:
-      - name: mynginx
-        image: rikwade/mynginx
+      - name: mynginx-ctr
+        image: rikwade/mynginx1
         ports:
         - containerPort: 80
 
