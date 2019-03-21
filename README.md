@@ -1,4 +1,4 @@
-#A VM for Docker and K8s lab exercises
+# A VM for Docker and K8s lab exercises
 
 $ vagrant up
 
@@ -11,5 +11,4 @@ The VM mounts a host filesystem directory called "sync" which is used to share
 lab exercise files with the VM, such as documentation and configuration files.
 
 Richard Wade
-ricwade@cisco.com
 February 2019
