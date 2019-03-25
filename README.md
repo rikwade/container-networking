@@ -2,7 +2,7 @@
 
 $ vagrant up
 
-will pull the Ubuntu bento/18.10 VM image, a minimal Ubuntu image, and then run
+will pull the Ubuntu bento/18.04 VM image, a minimal Ubuntu image, and then run
 the Ansible provisioner using playbook.yml.
 
 The Ansible playbook updates packages, installs Docker and the Ubuntu Snap for MicroK8s, minikube Kubernetes. 
