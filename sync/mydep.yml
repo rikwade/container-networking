@@ -19,7 +19,7 @@ spec:
         app: mynginx
     spec:
       containers:
-      - name: mynginx-pod
+      - name: mynginx
         image: rikwade/mynginx-v1
         ports:
         - containerPort: 80
