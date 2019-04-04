@@ -3,8 +3,7 @@ kind: Pod
 metadata:
   name: nginx-pod
   labels:
-    zone: prod
-    version: v1
+    app: nginx
 spec:
   containers:
   - name: mynginx
