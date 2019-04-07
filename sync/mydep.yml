@@ -1,12 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: mynginxdep
+  name: nginx-dep
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: mynginx
+      app: nginx-app
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
@@ -16,11 +16,10 @@ spec:
   template:
     metadata:
       labels:
-        app: mynginx
+        app: nginx-app
     spec:
       containers:
-      - name: mynginx
-        image: rikwade/mynginx-v1
+      - name: nginx-ctr
+        image: <username>/mynginx-v1
         ports:
         - containerPort: 80
-

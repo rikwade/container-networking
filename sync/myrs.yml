@@ -6,15 +6,15 @@ spec:
   replicas: 2
   selector:
     matchLabels:
-      app: mynginx
+      app: nginx-app
   template:
     metadata:
       labels:
-        app: mynginx
+        app: nginx-app
     spec:
       containers:
-      - name: mynginx
-        image: rikwade/mynginx
+      - name: nginx-ctr
+        image: <username>/mynginx-img
         ports:
         - containerPort: 80
 

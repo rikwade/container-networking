@@ -3,11 +3,11 @@ kind: Pod
 metadata:
   name: nginx-pod
   labels:
-    app: nginx
+    app: nginx-app
 spec:
   containers:
-  - name: mynginx
-    image: rikwade/mynginx
+  - name: nginx-ctr
+    image: <username>/mynginx-img
     ports:
     - containerPort: 80
 
